@@ -7,20 +7,20 @@
 	let list = [{text: 'A'}, {text: 'B'}, {text: 'C'}, {text: 'D'}];
 	function addList(el){
 		list.push({text: el});
-		updateState()
 	}
 	function updateState(){
 		list = list;
 	}
 	function submit(){
 		addList(prop.lembra);
+		updateState();
 	}
 </script>
 
 <main>
 
 	<Flex>
-		<!-- <Linha> -->
+		<Linha>
 			<form on:submit|preventDefault={submit}>
 				<Linha>
 					<label for="lembra">
@@ -30,7 +30,7 @@
 					<input type="submit" value="Adicionar">
 				</Linha>
 			</form>
-		<!-- </Linha> -->
+		</Linha>
 
 		<Linha>
 			<ul>
