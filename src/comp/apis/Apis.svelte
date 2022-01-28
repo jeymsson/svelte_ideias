@@ -1,6 +1,9 @@
 <script lang="ts">
 	import Flex from "../estilo/Flex.svelte";
+<<<<<<< HEAD
 	import Linha from "../estilo/Linha.svelte";
+=======
+>>>>>>> 999f45bd03572c1ecb4df054220264e9aba58188
 	let inp = 'https://swapi.dev/api/people/1/';
 	let api : Promise<any>;
 	let resp: string = '';
@@ -36,6 +39,7 @@
 <main>
 	<form on:submit|preventDefault="{submit}">
 		<Flex>
+<<<<<<< HEAD
 			<Linha>
 				<select >
 					<option value="1">get</option>
@@ -45,6 +49,11 @@
 		</Flex>
 	</form>
 
+=======
+			<input type="text" bind:value="{inp}">
+		</Flex>
+	</form>
+>>>>>>> 999f45bd03572c1ecb4df054220264e9aba58188
 	<pre>
 		{#if resp != ''}
 			{#await api}
@@ -60,5 +69,8 @@
 
 <style>
 	pre { text-align: left; }
+<<<<<<< HEAD
 	input { width: 100%; }
+=======
+>>>>>>> 999f45bd03572c1ecb4df054220264e9aba58188
 </style>
