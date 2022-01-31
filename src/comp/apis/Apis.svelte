@@ -8,17 +8,21 @@
 	let api_value;
 	let resp: string = '';
 	let api : Promise<any>;
+	$: style = api_value == 1 ? 'green' : 
+				(api_value == 2 ? 'bluee' : 
+					(api_value == 3 ? 'yello' : 'reddd'));
+		// 
 </script>
 
-<main>
+<!-- <main> -->
 
 	<Flex>
 		<Linha>
-			<select bind:value="{api_value}">
-				<option value="1">get</option>
-				<option value="2">post</option>
-				<option value="3">put</option>
-				<option value="4">delete</option>
+			<select bind:value="{api_value}" class="{style}">
+				<option value="1" class="green" >get</option>
+				<option value="2" class="bluee" >post</option>
+				<option value="3" class="yello" >put</option>
+				<option value="4" class="reddd" >delete</option>
 			</select>
 			{#if api_value == 1}
 				<Get bind:resp={resp} bind:api={api}  />
@@ -47,9 +51,13 @@
 		</Linha>
 	</Flex>
 
-</main>
+<!-- </main> -->
 
 <style>
 	pre { text-align: left; }
-	input { width: 100%; margin: auto; }
+	.green { background-color: #0aca0a; color: black; }
+	.bluee { background-color: #0e20bb; color: white; }
+	.yello { background-color: #f7f724; color: black; }
+	.reddd { background-color: #f84646; color: white; }
 </style>
+

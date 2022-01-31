@@ -3,7 +3,7 @@
 	import Linha from "../estilo/Linha.svelte";
 	export let api : Promise<any>;
 	export let resp: string = '';
-	let inp = 'http://localhost:3000/api/contacts/31';
+	let inp = 'http://localhost:3000/api/contacts/31        ';
 
 	function submit() {
 		api = getTodo(inp)
@@ -40,5 +40,6 @@
 </form>
 
 <style>
+	form { width: 100%; }
+	input { width: 100%; margin: auto; }
 </style>
-

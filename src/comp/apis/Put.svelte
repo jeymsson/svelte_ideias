@@ -49,6 +49,8 @@
 </form>
 
 <style>
+	form { width: 100%; }
+	input { width: 100%; margin: auto; }
 	textarea { width: 100%; }
 </style>
 

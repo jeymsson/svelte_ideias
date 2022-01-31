@@ -25,7 +25,6 @@
 			throw new Error(todo);
 		}
 	}
-
 </script>
 
 <form on:submit|preventDefault="{submit}">
@@ -37,5 +36,6 @@
 </form>
 
 <style>
+	form { width: 100%; }
+	input { width: 100%; margin: auto; }
 </style>
-
