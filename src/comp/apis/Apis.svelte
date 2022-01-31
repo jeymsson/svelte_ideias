@@ -1,65 +1,47 @@
 <script lang="ts">
-	import Flex from "../estilo/Flex.svelte";
-	import Linha from "../estilo/Linha.svelte";
-	let inp = '';
-	let api : Promise<any>;
+	import Flex from '../estilo/Flex.svelte';
+	import Linha from '../estilo/Linha.svelte';
+	import Get from './Get.svelte';
+	import Post from './Post.svelte';
+	let api_value;
 	let resp: string = '';
-
-	function submit() {
-		api = getTodo(inp)
-			.then(c => {
-				resp = c
-			})
-			.catch(e => {
-				resp = JSON.parse(JSON.stringify({ erro: e }, null, '\t'));
-			});
-	}
-
-	async function getTodo(url: string) {
-		const response = await fetch(url);
-		const todo = await response.json();
-
-		if (response.ok) {
-			return todo;
-		} else {
-			throw new Error(todo);
-		}
-	}
-
-	function print(v){
-		v = JSON.stringify(v, null, '\t');
-		return v;
-	}
-
+	let api : Promise<any>;
 </script>
 
 <main>
-	<form on:submit|preventDefault="{submit}">
-		<Flex>
-			<Linha>
-				<select >
-					<option value="1">get</option>
-				</select>
-				<input type="text" bind:value="{inp}">
-			</Linha>
-		</Flex>
-	</form>
 
-	<pre>
-		{#if resp != ''}
-			{#await api}
-				<p>...waiting</p>
-			{:then ret}
-				{ print(resp) }
-			{:catch error}
-				<p style="color: red">{error}</p>
-			{/await}
-		{/if}
-	</pre>
+	<Flex>
+		<Linha>
+			<select bind:value="{api_value}">
+				<option value="1">get</option>
+				<option value="2">post</option>
+			</select>
+			{#if api_value == 1}
+				<Get bind:resp={resp} bind:api={api}  />
+			{:else if api_value == 2}
+				<Post bind:resp={resp} bind:api={api} />
+			<!-- {:else} -->
+			{/if}
+		</Linha>
+		<Linha>
+			<pre>
+				{#if resp != ''}
+					{#await api}
+						<p>...waiting</p>
+					{:then ret}
+						<!-- { print(resp) } -->
+						{JSON.stringify(resp, null, '\t')}
+					{:catch error}
+						<p style="color: red">{error}</p>
+					{/await}
+				{/if}
+			</pre>
+		</Linha>
+	</Flex>
+
 </main>
 
 <style>
 	pre { text-align: left; }
-	input { width: 100%; }
+	input { width: 100%; margin: auto; }
 </style>
-
