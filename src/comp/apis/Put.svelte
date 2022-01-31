@@ -3,7 +3,7 @@
 	import Linha from "../estilo/Linha.svelte";
 	export let api : Promise<any>;
 	export let resp: string = '';
-	let url = 'http://localhost:3000/api/contacts';
+	let url = 'http://localhost:3000/api/contacts/27';
 	let txa = '{ "id": 12, "name": "Berlin Oriental", "visited": 1, "lat": 52.52, "lng": 13.405}';
 
 	function submit() {
@@ -18,7 +18,7 @@
 
 	async function getTodo(url: string, txa: string) {
 		const response = await fetch(url, {
-			method: "POST",
+			method: "PUT",
 			body: (txa === "object" ? JSON.stringify(txa) : txa),
 			headers: {"Content-type": "application/json; charset=UTF-8"}
 		})
