@@ -19,10 +19,10 @@
 	<Flex>
 		<Linha>
 			<select bind:value="{api_value}" class="{style}">
-				<option value="1" class="green" >get</option>
-				<option value="2" class="bluee" >post</option>
-				<option value="3" class="yello" >put</option>
-				<option value="4" class="reddd" >delete</option>
+				<option value="1" class="green" >GET</option>
+				<option value="2" class="bluee" >POST</option>
+				<option value="3" class="yello" >PUT</option>
+				<option value="4" class="reddd" >DELETE</option>
 			</select>
 			{#if api_value == 1}
 				<Get bind:resp={resp} bind:api={api}  />
